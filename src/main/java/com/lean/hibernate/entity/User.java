@@ -1,12 +1,10 @@
 package com.lean.hibernate.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Users {
+@Table(name="users")
+public class User {
     private int id;
     private String firstName;
     private String lastName;
@@ -46,7 +44,7 @@ public class Users {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Users users = (Users) o;
+        User users = (User) o;
 
         if (id != users.id) return false;
         if (firstName != null ? !firstName.equals(users.firstName) : users.firstName != null) return false;

@@ -12,7 +12,7 @@
     <property name="hibernate.show_sql">true</property>
 
     <mapping class="com.lean.hibernate.entity.Message"/>
-    <mapping class="com.lean.hibernate.entity.Users"/>
+    <mapping class="com.lean.hibernate.entity.User"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
