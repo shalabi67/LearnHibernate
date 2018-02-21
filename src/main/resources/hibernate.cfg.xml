@@ -13,6 +13,7 @@
 
     <mapping class="com.lean.hibernate.entity.Message"/>
     <mapping class="com.lean.hibernate.entity.User"/>
+    <mapping class="com.lean.hibernate.entity.UserHistory"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->

@@ -1,5 +1,6 @@
 package com.lean.hibernate.entity;
 
+import javax.annotation.Generated;
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +9,7 @@ public class User {
     private int id;
     private String firstName;
     private String lastName;
+    private Address address = new Address();
 
     @Id
     @Column(name = "id", nullable = false)
@@ -33,6 +35,15 @@ public class User {
     @Column(name = "lastName", nullable = false, length = 45)
     public String getLastName() {
         return lastName;
+    }
+
+    @Embedded
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public void setLastName(String lastName) {

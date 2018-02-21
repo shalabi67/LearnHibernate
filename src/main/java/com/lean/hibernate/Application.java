@@ -15,20 +15,22 @@ public class Application {
         Session session = sessionFactory.openSession();
         try {
 
-            /*
+
             User user = new User();
-            user.setId(2);
+            user.setId(3);
             user.setLastName("shalabi");
             user.setFirstName("ali");
+            user.getAddress().setStreet("löwen");
+            user.getAddress().setCity("berlin");
 
             session.beginTransaction();
             session.save(user);
             session.getTransaction().commit();
-            */
+
 
 
             session.beginTransaction();
-            User user1 = session.get(User.class, 1);
+            User user1 = session.get(User.class, 3);
             System.out.println(user1.getLastName());
 
             session.getTransaction().commit();
