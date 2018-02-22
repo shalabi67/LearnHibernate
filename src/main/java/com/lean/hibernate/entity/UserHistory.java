@@ -1,17 +1,29 @@
 package com.lean.hibernate.entity;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
+
 
 @Entity
 @Table(name = "user_history", schema = "hello-world")
 public class UserHistory {
     private int id;
-    private Timestamp entryTime;
+    private Date entryTime;
     private String entry;
+    private User user = new User();
+
+    public UserHistory() {
+
+    }
+    public UserHistory(Date entryTime, String entry) {
+        this.entryTime = entryTime;
+        this.entry = entry;
+
+    }
 
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -22,11 +34,11 @@ public class UserHistory {
 
     @Basic
     @Column(name = "entry_time", nullable = false)
-    public Timestamp getEntryTime() {
+    public Date getEntryTime() {
         return entryTime;
     }
 
-    public void setEntryTime(Timestamp entryTime) {
+    public void setEntryTime(Date entryTime) {
         this.entryTime = entryTime;
     }
 
@@ -40,25 +52,13 @@ public class UserHistory {
         this.entry = entry;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        UserHistory that = (UserHistory) o;
-
-        if (id != that.id) return false;
-        if (entryTime != null ? !entryTime.equals(that.entryTime) : that.entryTime != null) return false;
-        if (entry != null ? !entry.equals(that.entry) : that.entry != null) return false;
-
-        return true;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    public User getUser() {
+        return user;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (entryTime != null ? entryTime.hashCode() : 0);
-        result = 31 * result + (entry != null ? entry.hashCode() : 0);
-        return result;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
